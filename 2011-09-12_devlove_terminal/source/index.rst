@@ -41,11 +41,12 @@ Agenda
 自己紹介とか
 ============================================
 * すずきまさし (鈴木 勝史)
+* 26歳くらい
 * 株式会社モバイルファクトリー システム開発部
 * twitter : @masasuz
 * hatena  : id:masasuz http://d.hatena.ne.jp/masasuz/
 * facebook: http://www.facebook.com/masasuz
-
+* github  : https://github.com/masasuzu
 
 
 
@@ -60,7 +61,8 @@ Agenda
 
 自己紹介とか cont..
 ============================================
-* 1年半前から今のお仕事
+* 1年半前から今の黒い画面でごにょごにょするお仕事
+* それまではwindows上でgvimを使って開発するお仕事
 * 普段のお仕事は携帯の公式サイトとか携帯向けのソーシャルアプリとか開発
 * 一応サーバの構築から運用保守まで大体全部やります
 
@@ -97,12 +99,12 @@ Agenda
 
 
 
-
 普段の使い方(terminalとか全般)
 ============================================
 * 普段の環境はWindowsマシンからteraterm経由でdebianマシンにsshしています
 * デュアルディスプレイ + ノートPCでtera termを二枚立ち上げています
 * ノートとデスクトップマシンはSynergyでキーボードとマウスを共有しています
+* http://synergy-foss.org/
 
   * 1枚でコーディング
   * もう一枚でApacheのログ確認とか
@@ -121,6 +123,7 @@ Agenda
 
 普段の使い方(screen)
 ============================================
+
 * tscreenを使っています。
 
   * 理由は特にないです。
@@ -135,12 +138,9 @@ Agenda
 
 
 
-
-
-
-
 普段の使い方(screen) cont..
 ============================================
+
 * スクリーンは基本立ち上げっぱなしです。
 
   * 出社したらscreen -rd project
@@ -158,16 +158,16 @@ Agenda
 
 
 
-
 普段の使い方(screen) cont...
 ============================================
+
 * スクリーンは目的ごとに立ち上げています。
 
   * screen -S ${SCREEN_NAME}
-  * project(コーディングとか普段のお仕事用)
-  * log(ローカルのログ監視用Apacheとかlightyとかsyslogとか)
-  * system(常に動かし放しのプログラム用、port-forwardingとかtiarraとか。deamon-toolsを使えと言う噂もありますが。。)
-  * idc(データセンター作業用)
+  * project (コーディングとか普段のお仕事用)
+  * log     (ローカルのログ監視用Apacheとかlightyとかsyslogとか)
+  * system  (常に動かし放しのプログラム用、port-forwardingとかtiarraとか。deamon-toolsを使えと言う噂もありますが。。)
+  * idc     (データセンター作業用)
 
 * 他の人がどんな感じでスクリーンを使い分けているのかちょっと知りたいです。
 * screen上だとmultitailの表示がおかしくなる原因を知っている人がいたら教えてください。
@@ -189,7 +189,6 @@ Agenda
   * http://www.clear-code.com/blog/2011/9/5.html
   * githubとかにdotfilesとかそんな名前のプロジェクトが転がっているのでそのへんからコピーして良いです。
   * だんだん自分好みの設定にしていくといいです。
-
 
 
 
@@ -306,6 +305,7 @@ Agenda
 * とにかくまずは使い始めてみてください。自分も最初は戸惑いましたが、2週間も使い続ければ慣れますです。
 * 設定とか分からなければ、最初は他の人の設定ファイルを丸ぱくれば良いと思います。徐々に自分好みに改造!!
 * 資料はgithubあたりに上げておきます。
+* https://github.com/masasuzu/slide/blob/master/2011-09-12_devlove_terminal/source/index.rst
 
 
 
