@@ -44,7 +44,7 @@ Agenda
 * 26歳くらい
 * 株式会社モバイルファクトリー システム開発部
 * twitter : @masasuz
-* hatena  : id:masasuz http://d.hatena.ne.jp/masasuz/
+* hatena  : http://d.hatena.ne.jp/masasuz/
 * facebook: http://www.facebook.com/masasuz
 * github  : https://github.com/masasuzu
 
@@ -208,9 +208,9 @@ Agenda
   * ユーザ名@マシン名
   * gitのブランチ名
 
+::
 
-
-
+    [ LAB ] masasuzu@lenny01%                  [~/project/setup][master]
 
 
 
@@ -247,7 +247,7 @@ Agenda
   * ln -s ${REPOS}/.zshrc ${HOME}/.zshrc
   * ファイルの更新するときはgitの操作だけでよくなります
 
-
+* https://github.com/masasuzu/setup
 
 
 
