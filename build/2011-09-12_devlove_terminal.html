@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.1" />
+<title>zshとtscreenとterminalと私</title>
+<meta name="author" content="SUZUKI Masashi / masasuzu" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 5196 2007-06-03 20:25:28Z wiemann $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/default/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+
+</div>
+<div id="footer">
+<h1>zshとtscreenとterminalと私</h1>
+
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">zshとtscreenとterminalと私</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Version:</th>
+<td>1.0 of 2011/09/12</td></tr>
+<tr><th class="docinfo-name">Author:</th>
+<td>SUZUKI Masashi / masasuzu</td></tr>
+<tr class="field"><th class="docinfo-name">Mail:</th><td class="field-body"><a class="reference external" href="mailto:m15.suzuki.masashi&#64;gmail.com">m15.suzuki.masashi&#64;gmail.com</a></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div class="slide" id="agenda">
+<h1>Agenda</h1>
+<ol class="arabic simple">
+<li>自己紹介</li>
+<li>普段のターミナルの使い方(全般のこと)</li>
+<li>普段のターミナルの使い方(screen)</li>
+<li>普段のターミナルの使い方(zsh)</li>
+<li>設定ファイルはバージョン管理する</li>
+</ol>
+</div>
+<div class="slide" id="id1">
+<h1>自己紹介とか</h1>
+<ul class="simple">
+<li>すずきまさし (鈴木 勝史)</li>
+<li>26歳くらい</li>
+<li>株式会社モバイルファクトリー システム開発部</li>
+<li>twitter : &#64;masasuz</li>
+<li>hatena  : <a class="reference external" href="http://d.hatena.ne.jp/masasuz/">http://d.hatena.ne.jp/masasuz/</a></li>
+<li>facebook: <a class="reference external" href="http://www.facebook.com/masasuz">http://www.facebook.com/masasuz</a></li>
+<li>github  : <a class="reference external" href="https://github.com/masasuzu">https://github.com/masasuzu</a></li>
+</ul>
+</div>
+<div class="slide" id="cont">
+<h1>自己紹介とか cont..</h1>
+<ul class="simple">
+<li>1年半前から今の黒い画面でごにょごにょするお仕事</li>
+<li>普段のお仕事は携帯の公式サイトとか携帯向けのソーシャルアプリとか開発</li>
+<li>一応サーバの構築から運用保守まで大体全部やります</li>
+<li>vimとかzshとかperlとかtscreenとかtera term使いです</li>
+</ul>
+</div>
+<div class="slide" id="terminal">
+<h1>普段の使い方(terminalとか全般)</h1>
+<ul class="simple">
+<li>クライアント: Tera Term on WindowsXP</li>
+<li>サーバマシン: Debian (主にlenny)</li>
+<li>Tera Termを二枚立ち上げています<ul>
+<li>1枚でコーディング</li>
+<li>もう一枚でApacheのログ確認とか</li>
+</ul>
+</li>
+<li>ノートとデスクトップマシンはSynergyでキーボードとマウスを共有して擬似的にトリプルディスプレイにしてます</li>
+<li><a class="reference external" href="http://synergy-foss.org/">http://synergy-foss.org/</a></li>
+</ul>
+</div>
+<div class="slide" id="screen">
+<h1>普段の使い方(screen)</h1>
+<ul class="simple">
+<li>tscreenを使っています。<ul>
+<li>理由は特にないです。</li>
+<li>最初にトレーナについた先輩が使っていたのがtscreenだったので。設定も先輩のものをぱくって少しいじっている程度</li>
+<li>tmuxとか興味があるので使ってみたい。</li>
+</ul>
+</li>
+<li>スクリーンは基本立ち上げっぱなしです。<ul>
+<li>出社したらscreen -rd project</li>
+<li>退社する時は screen -d</li>
+</ul>
+</li>
+<li>ウィンドウ分割とか使ってないです。<ul>
+<li>ディスプレイが狭いし…</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="screen-cont">
+<h1>普段の使い方(screen) cont...</h1>
+<ul class="simple">
+<li>スクリーンは目的ごとに立ち上げています。<ul>
+<li>screen -S ${SCREEN_NAME}</li>
+<li>project (コーディングとか普段のお仕事用)</li>
+<li>log     (ローカルのログ監視用Apacheとかlightyとかsyslogとか)</li>
+<li>system  (常に動かし放しのプログラム用、port-forwardingとかtiarraとか。deamon-toolsを使えと言う噂もありますが。。)</li>
+<li>idc     (データセンター作業用)</li>
+</ul>
+</li>
+<li>他の人がどんな感じでスクリーンを使い分けているのかちょっと知りたいです。</li>
+<li>screen上だとmultitailの表示がおかしくなる原因を知っている人がいたら教えてください。</li>
+<li>そのほかではIDCのデプロイサーバでスクリーンを立ち上げています<ul>
+<li>会社 - IDC間で接続が切れても平気</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="zsh">
+<h1>普段の使い方(zsh)</h1>
+<ul class="simple">
+<li>設定とか先輩のものをまるぱくり(最初は)<ul>
+<li>最初の内はそれでいいと思います</li>
+<li>zshの良い記事があったので、そこをコピーして使い始めるといいんじゃないですかね。</li>
+<li><a class="reference external" href="http://www.clear-code.com/blog/2011/9/5.html">http://www.clear-code.com/blog/2011/9/5.html</a></li>
+<li>githubとかにdotfilesとかそんな名前のプロジェクトが転がっているのでそのへんからコピーして良いです。</li>
+<li>だんだん自分好みの設定にしていくといいです。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="zsh-cont">
+<h1>普段の使い方(zsh) cont..</h1>
+<ul class="simple">
+<li>プロンプトは少しいじってます。<ul>
+<li>ドメイン</li>
+<li>パス</li>
+<li>ユーザ名&#64;マシン名</li>
+<li>gitのブランチ名</li>
+</ul>
+</li>
+</ul>
+<pre class="literal-block">
+[ LAB ] masasuzu&#64;lenny01%                  [~/project/setup][master]
+</pre>
+</div>
+<div class="slide" id="id2">
+<h1>設定ファイルはバージョン管理する</h1>
+<ul class="simple">
+<li>管理サーバが1台2台の時は都度コピーしても気にならないけど、多くなってくると破綻します</li>
+<li>gitなどで設定ファイルをバージョン管理すると吉<ul>
+<li>レポジトリにあるファイルを実体ファイルにして、homeディレクトリにリンクを張ると良い</li>
+<li>ln -s ${REPOS}/.zshrc ${HOME}/.zshrc</li>
+<li>ファイルの更新するときはgitの操作だけでよくなります</li>
+</ul>
+</li>
+<li><a class="reference external" href="https://github.com/masasuzu/setup">https://github.com/masasuzu/setup</a></li>
+<li>ちなみに、会社と個人環境で同じ設定使ってます。<ul>
+<li>一部読み込むファイルを出し分けてます。</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id3">
+<h1>設定ファイルはバージョン管理する cont..</h1>
+<ul class="simple">
+<li>こんなものをレポジトリに入れています。<ul>
+<li>.zshrc</li>
+<li>.zprofile</li>
+<li>.vimrc</li>
+<li>vimのプラグイン</li>
+<li>.tscreenrc</li>
+<li>.gitconfig</li>
+<li>Makefile</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id4">
+<h1>設定ファイルはバージョン管理する cont...</h1>
+<ul class="simple">
+<li>Makefile ?<ul>
+<li>各設定ファイルにいちいちlnコマンドを実行するのはめんどい</li>
+<li>make envとかやると一発で設定ファイルのリンクを張ってくれます</li>
+<li>いろいろな環境設定がmake hogehogeでできるのでインタフェースが統一されている</li>
+</ul>
+</li>
+<li>シェルスクリプトでやるのとどっちが良いのか迷い中</li>
+</ul>
+</div>
+<div class="slide" id="id5">
+<h1>おわりに</h1>
+<ul class="simple">
+<li>ターミナルを使う上で何かヒントになれば幸いです。</li>
+<li>とにかくまずは使い始めてみてください。自分も最初は戸惑いましたが、2週間も使い続ければ慣れますです。</li>
+<li>設定とか分からなければ、最初は他の人の設定ファイルを丸ぱくれば良いと思います。徐々に自分好みに改造!!</li>
+<li>資料はgithubあたりに上げておきます。</li>
+<li><a class="reference external" href="https://github.com/masasuzu/slide/blob/master/2011-09-12_devlove_terminal/source/index.rst">https://github.com/masasuzu/slide/blob/master/2011-09-12_devlove_terminal/source/index.rst</a></li>
+</ul>
+</div>
+</div>
+</body>
+</html>
