@@ -4,14 +4,16 @@
 
 第二回DevLOVEターミナル勉強会
 
-:Version:
-    1.0 of 2012/03/26
 
-:Author:
-    SUZUKI Masashi / masasuzu
 
-:Mail:
-    m15.suzuki.masashi@gmail.com
+Version
+:1.0 of 2012/03/26
+
+Author
+:SUZUKI Masashi / masasuzu
+
+Mail
+:m15.suzuki.masashi@gmail.com
 
 
 
@@ -23,9 +25,9 @@
 
 Agenda
 ============================================
-#. let me introduce myself and my context.
-#. write your code.
-#. watch your log.
+1. let me introduce myself and my context.
+2. write your code.
+3. watch your log.
 
 
 
@@ -67,14 +69,14 @@ Agenda
 普段のお仕事環境
 ============================================
 
-:クライアントマシン:
-    Windows7
-:ターミナル:
-    mintty
-:開発マシン:
-    Debian Lenny
+クライアントマシン
+:Windows7
 
-::
+ターミナル
+:mintty
+
+開発マシン
+:Debian Lenny
 
     Client PC
     (mintty on Windows)
@@ -88,4 +90,11 @@ Agenda
 
 
 
+コードを書く
+============================================
 
+ログを見る
+============================================
+
+まとめ?
+============================================
