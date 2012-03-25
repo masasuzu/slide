@@ -1,0 +1,536 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="css/impress.css" rel="stylesheet" />
+</head>
+<body>
+<div id="impress" class="impress-not-supported">
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b> or <b>Safari</b> browser. Firefox 10 (to be released soon) will also handle it.</p>
+    </div>
+
+<div id="title" class="step" data-y="0" data-x="0">
+<h1>カジュアルにターミナルを使う</h1>
+
+<p>第二回DevLOVEターミナル勉強会</p>
+
+<p>Version
+:1.0 of 2012/03/26</p>
+
+<p>Author
+:SUZUKI Masashi / masasuzu</p>
+
+<p>Mail
+:m15.suzuki.masashi@gmail.com</p>
+
+</div>
+<div class="step" data-y="0" data-x="1200">
+<h1>Agenda</h1>
+
+<ol>
+<li>introduction.</li>
+<li>use terminal.</li>
+<li>write your code.</li>
+<li>watch your log.</li>
+</ol>
+
+</div>
+<div class="step" data-y="0" data-x="2400">
+<h1>自己紹介とか</h1>
+
+<ul>
+<li>すずきまさし (鈴木 勝史)</li>
+<li>株式会社モバイルファクトリー システム開発部</li>
+<li>@masasuz</li>
+</ul>
+
+</div>
+<div class="step" data-y="0" data-x="3600">
+<h1>コンテキストとか</h1>
+
+<ul>
+<li>黒い画面でごにょごにょするお仕事は2年くらい</li>
+<li>普段のお仕事は携帯の公式サイトとか携帯向けのソーシャルアプリとか開発</li>
+<li>開発から運用保守まで大体全部やります</li>
+<li>vim / perl / mysql / tscreen / zsh</li>
+</ul>
+
+</div>
+<div class="step" data-y="0" data-x="4800">
+<h1>普段のお仕事環境</h1>
+
+<p>クライアントマシン
+:Windows7</p>
+
+<p>ターミナル
+:mintty</p>
+
+<p>開発マシン
+:Debian Lenny</p>
+
+<pre><code>Client PC
+(mintty on Windows)
+    |
+    |
+    |  ssh    Development Machine
+    +-------&gt; (Debian Lenny on VM)
+                |
+                |  ssh    IDC
+                +-------&gt; (Debian Lenny)
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="0">
+<h1>前回</h1>
+
+<p>第一回ターミナル勉強会で普段のターミナルの使い方について話をさせていただきました。</p>
+
+<ul>
+<li>http://masasuzu.github.com/slide/build/2011-09-12_devlove_terminal.html</li>
+</ul>
+
+</div>
+<div class="step" data-y="800" data-x="1200">
+<h1>今回</h1>
+
+<p>一歩進めてカジュアルな感じで、もうちょっとターミナルを便利に使うために覚えると便利かもしれないコマンドの使い方を.zsh_historyから適当に拾ってきて紹介します。</p>
+
+<p>濃いお話はきっと ようぞうさんや 緒方さんにしていただけると思いますのでカジュアルな感じで行きます。</p>
+
+<p>基本、debian lennyで確認しています。macとかだと動かないかも。</p>
+
+</div>
+<div class="step" data-y="800" data-x="2400">
+<h1>ターミナルを使う</h1>
+
+</div>
+<div class="step" data-y="800" data-x="3600">
+<h1>コマンドライン編集</h1>
+
+<p>コマンドラインはデフォルトで、emacsキーバインドになっています。
+emacsキーバインドを覚えておくと効率よくコマンドラインを編集することができるようになります。</p>
+
+<p>set -oで変更することができます。</p>
+
+<pre><code>set -o vi
+set -o emacs
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="4800">
+<h1>emacsキーバインド</h1>
+
+<ul>
+<li>Ctrl + f
+<ul>
+<li>右に移動  →</li>
+<li>forward</li>
+</ul></li>
+<li>Ctrl + b
+<ul>
+<li>左に移動  ←</li>
+<li>back</li>
+</ul></li>
+<li>Ctrl + h
+<ul>
+<li>1文字削除、バックスペース</li>
+</ul></li>
+<li>Ctrl + j
+<ul>
+<li>Enter</li>
+</ul></li>
+<li>Ctrl + [
+<ul>
+<li>ESC</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="1600" data-x="0">
+<h1>emacsキーバインド cont.</h1>
+
+<ul>
+<li>ESC + f
+<ul>
+<li>右に1単語移動</li>
+</ul></li>
+<li>ESC + b
+<ul>
+<li>左に1単語移動</li>
+</ul></li>
+<li>ESC + d
+<ul>
+<li>右の1単語削除</li>
+</ul></li>
+<li>Ctrl + w
+<ul>
+<li>左の1単語削除</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="1600" data-x="1200">
+<h1>emacsキーバインド cont..</h1>
+
+<ul>
+<li>Ctrl + a
+<ul>
+<li>行頭に移動</li>
+<li>一番最初のa</li>
+</ul></li>
+<li>Ctrl + e
+<ul>
+<li>行末に移動</li>
+<li>end</li>
+</ul></li>
+<li>Ctrl + k
+<ul>
+<li>現在位置から行末まで削除</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="1600" data-x="2400">
+<h1>ヒストリー</h1>
+
+<ul>
+<li>Ctrl + p
+<ul>
+<li>コマンド履歴の後方参照</li>
+<li>previous</li>
+</ul></li>
+<li>Ctrl + n
+<ul>
+<li>コマンド履歴の前方参照</li>
+<li>next</li>
+</ul></li>
+<li>Ctrl + r
+<ul>
+<li>コマンド履歴の後方検索</li>
+</ul></li>
+<li>Ctrl + s
+<ul>
+<li>コマンド履歴の前方検索</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="1600" data-x="3600">
+<h1>fc</h1>
+
+<p>コマンドラインをエディタで編集できます。EDITOR変数に指定されているエディタが立ち上がります。</p>
+
+</div>
+<div class="step" data-y="1600" data-x="4800">
+<h1>コードを書く</h1>
+
+</div>
+<div class="step" data-y="2400" data-x="0">
+<h1>vim</h1>
+
+</div>
+<div class="step" data-y="2400" data-x="1200">
+<h1>vim -c</h1>
+
+<p>普段エディタはvimを使っています。-cオプションを付けると起動時にコマンドを実行してくれます。</p>
+
+<pre><code>vim -c ":NERDTree"
+</code></pre>
+
+</div>
+<div class="step" data-y="2400" data-x="2400">
+<h1>vim -d</h1>
+
+<p>diffを使っても良いんですが、vimでシンタックスハイライトをしてくれるので、ハイライト大好きな人なら使っておいて損は無いかと。</p>
+
+<p>また、vimで開いているのでその場で編集できます。</p>
+
+<pre><code>vim -d  ${FILE1} ${FILE2}
+vimdiff ${FILE1} ${FILE2}
+</code></pre>
+
+</div>
+<div class="step" data-y="2400" data-x="3600">
+<h1>vim -b -c ':%!xxd'</h1>
+
+<p>バイナリも開けるよ。
+使ったことはほぼないですが。。。</p>
+
+<pre><code>vim -b -c ':%!xxd' ${FILE}
+</code></pre>
+
+</div>
+<div class="step" data-y="2400" data-x="4800">
+<h1>vim -R</h1>
+
+<p>読み込み専用モードで開く。シンタックスハイライトが(ry</p>
+
+<p>※ 本番サーバではlessとかlv使ってね。</p>
+
+<pre><code>vim -R ${FILE}
+view   ${FILE}
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="0">
+<h1>コードを探す</h1>
+
+</div>
+<div class="step" data-y="3200" data-x="1200">
+<h1>grep</h1>
+
+</div>
+<div class="step" data-y="3200" data-x="2400">
+<h1>grep -r</h1>
+
+<p>再帰的に検索してくれます。</p>
+
+<pre><code>grep -r          ${PATTERN} ./
+grep --recursive ${PATTERN} ./
+grep -d recurse  ${PATTERN} ./
+grep --directories=recurse ${PATTERN} ./
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="3600">
+<h1>grep -n</h1>
+
+<p>行数を表示します。</p>
+
+<pre><code>grep -rn ${PATTERN} ./
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="4800">
+<h1>grep -A -B -C</h1>
+
+<p>"-A n"でマッチした行の後ろの行n行、"-B n"でマッチした行の前n行も表示してくれます。
+"-C n"で前後n行を表示します。</p>
+
+<p>メソッドとかの使用コンテキストを知りたい時に使うと便利。</p>
+
+<pre><code>grep -r -A3 -B3 ${PATTERN} ./
+grep -r -C3     ${PATTERN} ./
+</code></pre>
+
+</div>
+<div class="step" data-y="4000" data-x="0">
+<h1>grep --exclude-dir</h1>
+
+<p>除外ディレクトリを指定できます。.gitとか.svmとかを除外しておくと良いです。</p>
+
+<pre><code>grep -r --exclude-dir=".git" ${PATTERN} ./
+</code></pre>
+
+</div>
+<div class="step" data-y="4000" data-x="1200">
+<h1>grep --color</h1>
+
+<p>検索結果を色づけしてくれます。</p>
+
+<pre><code>grep -r --color=auto --exclude-dir=.git ${PATTERN} ./
+</code></pre>
+
+</div>
+<div class="step" data-y="4000" data-x="2400">
+<h1>grep -v</h1>
+
+<p>マッチしない行を返してくれます。
+検索の絞り込みとかに使うと便利ですね。</p>
+
+<pre><code>grep -r ${PATTERN1} ./ | grep -v ${PATTERN2}
+</code></pre>
+
+</div>
+<div class="step" data-y="4000" data-x="3600">
+<h1>grep -w -x</h1>
+
+<p>"-w"オプションは単語としてマッチした行、"-x"オプションは行としてマッチした行を返してくれます。</p>
+
+<p>"-w"オプションは変数名とかメソッド名を探す時に使えるかな。</p>
+
+<pre><code>grep -r  -w            ${PATTERN} ./
+grep -r  --word-regexp ${PATTERN} ./
+
+grep -r  -x            ${PATTERN} ./
+grep -r  --line-regexp ${PATTERN} ./
+</code></pre>
+
+</div>
+<div class="step" data-y="4000" data-x="4800">
+<h1>grep -h</h1>
+
+<p>ファイル名を表示させません。パイプラインに喰わせる時に使います。</p>
+
+</div>
+<div class="step" data-y="4800" data-x="0">
+<h1>grep -c</h1>
+
+<p>ファイル毎でマッチした回数をカウントします。</p>
+
+<pre><code>grep -rc ${PATTERN} ./
+</code></pre>
+
+<p>awkとかに喰わせれば、プロジェクト内でメソッドが合計でどれくらい使われているかとか測ったりもできます。</p>
+
+<pre><code>grep -rwhc ${PATTERN} ./ | awk 'BEGIN{sum=0}{sum=sum+$1}END{print sum}'
+grep -rwhc ${PATTERN} ./ | perl -E 'my $c; while (&lt;STDIN&gt;) { chomp; $c += $_; }; say $c'
+</code></pre>
+
+</div>
+<div class="step" data-y="4800" data-x="1200">
+<h1>grep -c cont.</h1>
+
+<p>そんな面倒なことしなくても、wc -lに喰わせれば良いのでした。</p>
+
+<pre><code>grep -rw ${PATTERN} ./ | wc -l
+</code></pre>
+
+</div>
+<div class="step" data-y="4800" data-x="2400">
+<h1>grep -l -L</h1>
+
+<p>"-l"オプションでマッチしたファイル名を表示、"-L"オプションでマッチしなかったファイル名を表示します。</p>
+
+<pre><code>grep -rwl                     ${PATTERN} ./
+grep -rw --files-with-matches ${PATTERN} ./
+
+grep -rwL                      ${PATTERN} ./
+grep -rw --files-without-match ${PATTERN} ./
+
+grep -rwl ${PATTERN} ./ | wc -l
+</code></pre>
+
+</div>
+<div class="step" data-y="4800" data-x="3600">
+<h1>grepその他</h1>
+
+<ul>
+<li>--binary-files=without-match
+<ul>
+<li>バイナリファイルを無視してくれます。</li>
+</ul></li>
+<li>-q --quiet --silent
+<ul>
+<li>ステータスコードだけ返す。シェルスクリプトとかで使うと良いかも。</li>
+</ul></li>
+<li>-i --ignore-case
+<ul>
+<li>大文字小文字を区別しません。</li>
+</ul></li>
+<li>SEE ALSO
+<ul>
+<li>LANG=C man grep</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="4800" data-x="4800">
+<h1>GREP_OPTIONS変数</h1>
+
+<p>GREP_OPTIONS変数を定義しておくと、grep使用時に指定されたオプションを付けてくれます。</p>
+
+<p>"--recursive"とか"--color"あたりを.zshrcとかに入れておくと良いでしょう。</p>
+
+<pre><code>GREP_OPTIONS="--recursive --color=auto --exclude-dir=.git"
+</code></pre>
+
+</div>
+<div class="step" data-y="5600" data-x="0">
+<h1>ack</h1>
+
+<p>Perlで実装されたgrep互換のコマンド。
+cpanだとApp::Ack、debianだとack-grepってパッケージ名になっているはず。</p>
+
+<p>デフォルトで、色づけされていたり、再帰的に検索してくれるので、カジュアルに使うにはgrepよりは便利。</p>
+
+</div>
+<div class="step" data-y="5600" data-x="1200">
+<h1>git grep</h1>
+
+<p>gitを使っているなら素直にgit grep使った方が良いシーンが多いと思います。
+grep本体より低機能。</p>
+
+</div>
+<div class="step" data-y="5600" data-x="2400">
+<h1>ログを見る</h1>
+
+</div>
+<div class="step" data-y="5600" data-x="3600">
+<h1>date</h1>
+
+<p>現在時刻を表示するコマンド。フォーマットを指定することもできるので、日にちでローテションしているログファイルにアクセスするのに使えます。</p>
+
+<pre><code>tail -f /usr/local/apache/logs/$( date +"%Y/%m/error.%Y_%m%d").log
+# tail -f /usr/local/apache/logs/2012/03/error.2012_0326.log
+</code></pre>
+
+<p>こういうのは毎回打つのが面倒なので、パスの通ったところに実行権を付けてスクリプトファイルにしておくと再利用できて便利です。</p>
+
+<pre><code>tail -f $(apache_error_log)
+</code></pre>
+
+</div>
+<div class="step" data-y="5600" data-x="4800">
+<h1>tail</h1>
+
+<p>tailfをgrepに喰わせることで、フィルタリングすることもできます。</p>
+
+<pre><code>tail -f /var/log/any.log | fgrep error
+</code></pre>
+
+<p>sedで特定の単語をansii colorで色づけしてあげることもできます。</p>
+
+<pre><code>tail -f /var/log/any.log | sed -e 's/\([error]\)/\x1b[33m\1\x1b[0m/g'
+</code></pre>
+
+</div>
+<div class="step" data-y="6400" data-x="0">
+<h1>ssh</h1>
+
+<p>ssh接続先に一番最後の引数にコマンドを指定すると接続先にコマンドを実行することがでいます。</p>
+
+<p>こんな感じで、リモートサーバのエラーログを見ることができます。</p>
+
+<pre><code>ssh 192.168.1.2 "tail -100 /var/log/any.log | fgrep [error]"
+</code></pre>
+
+</div>
+<div class="step" data-y="6400" data-x="1200">
+<h1>最後に</h1>
+
+<p>拙い発表ですが、明日からの現場に役立つことが1つでもあれば幸いです。</p>
+
+<p>私自身ターミナルの達人には遠いと思っているので、これ違うよとかもっと便利な方法があるよとかありましたら、次回のターミナル勉強会で是非発表していただけるとありがたいです。</p>
+
+<p>求む。達人ターミナル使い。</p>
+
+</div>
+<div class="step" data-y="6400" data-x="2400">
+<h1>Thank you.</h1>
+
+</div>
+
+
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+<script src="js/impress.js"></script>
+
+</body>
+</html>
+

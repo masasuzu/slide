@@ -458,9 +458,9 @@ function notOperaFix() {
 		slides.setAttribute('href',slideCSS); // Gecko fix
 	}
 	if (isIE && document.styleSheets && document.styleSheets[0]) {
-		document.styleSheets[0].addRule('img', 'behavior: url(ui/default/iepngfix.htc)');
-		document.styleSheets[0].addRule('div', 'behavior: url(ui/default/iepngfix.htc)');
-		document.styleSheets[0].addRule('.slide', 'behavior: url(ui/default/iepngfix.htc)');
+		document.styleSheets[0].addRule('img', 'behavior: url(ui/small-black/iepngfix.htc)');
+		document.styleSheets[0].addRule('div', 'behavior: url(ui/small-black/iepngfix.htc)');
+		document.styleSheets[0].addRule('.slide', 'behavior: url(ui/small-black/iepngfix.htc)');
 	}
 }
 
