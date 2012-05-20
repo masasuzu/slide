@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="css/impress.css" rel="stylesheet" />
+</head>
+<body>
+<div id="impress" class="impress-not-supported">
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b> or <b>Safari</b> browser. Firefox 10 (to be released soon) will also handle it.</p>
+    </div>
+
+<div id="title" class="step" data-y="0" data-x="0">
+<h1>黒い画面入門 Part.I</h1>
+
+<p>Version
+:1.0 of 2012/05/21</p>
+
+<p>Author
+:SUZUKI Masashi / masasuzu</p>
+
+<p>Mail
+:m15.suzuki.masashi@gmail.com</p>
+
+</div>
+<div class="step" data-y="0" data-x="1200">
+<h1>Agenda</h1>
+
+<ol>
+<li>自己紹介的な何か.</li>
+<li>なぜ黒い画面.</li>
+<li>コマンドライン操作</li>
+<li>簡単なコマンド.</li>
+</ol>
+
+</div>
+<div class="step" data-y="0" data-x="2400">
+<h1>自己紹介とか</h1>
+
+<ul>
+<li>すずきまさし (鈴木 勝史)</li>
+<li>株式会社モバイルファクトリー システム開発部</li>
+<li>@masasuz</li>
+</ul>
+
+</div>
+<div class="step" data-y="0" data-x="3600">
+<h1>コンテキストとか</h1>
+
+<ul>
+<li>黒い画面でごにょごにょするお仕事は2年くらい(6月で3年目)</li>
+<li>普段のお仕事は携帯の公式サイトとか携帯向けのソーシャルアプリとか開発</li>
+<li>開発から運用･障碍対応まで大体全部やります</li>
+<li>vim / perl / mysql / tscreen / zsh / debian</li>
+</ul>
+
+<p>今回の話は昔どっかの勉強会で話した内容の焼き直しです。</p>
+
+<ul>
+<li>http://masasuzu.github.com/slide/build/2011-03-26_devlove_terminal.html</li>
+</ul>
+
+</div>
+<div class="step" data-y="0" data-x="4800">
+<h1>普段のお仕事環境</h1>
+
+<p>クライアントマシン
+:Windows7</p>
+
+<p>ターミナル
+:mintty</p>
+
+<p>開発マシン
+:Debian Lenny</p>
+
+<pre><code>Client PC
+(mintty on Windows)
+    |
+    |
+    |  ssh    Development Machine
+    +-------&gt; (Debian Lenny on VM)
+                |
+                |  ssh    IDC
+                +-------&gt; (Debian Lenny)
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="0">
+<h1>なんで黒い画面(ターミナル)</h1>
+
+<p>TODO</p>
+
+</div>
+<div class="step" data-y="800" data-x="1200">
+<h1>コマンドライン操作</h1>
+
+</div>
+<div class="step" data-y="800" data-x="2400">
+<h1>コマンドライン編集</h1>
+
+<p>コマンドラインはデフォルトで、emacsキーバインドになっています。
+emacsキーバインドを覚えておくと効率よくコマンドラインを編集することができるようになります。</p>
+
+<p>set -oで変更することができます。</p>
+
+<pre><code>set -o vi
+set -o emacs
+</code></pre>
+
+</div>
+<div class="step" data-y="800" data-x="3600">
+<h1>emacsキーバインド</h1>
+
+<ul>
+<li>Ctrl + f
+<ul>
+<li>右に移動  →</li>
+<li>forward</li>
+</ul></li>
+<li>Ctrl + b
+<ul>
+<li>左に移動  ←</li>
+<li>back</li>
+</ul></li>
+<li>Ctrl + h
+<ul>
+<li>1文字削除、バックスペース</li>
+</ul></li>
+<li>Ctrl + j
+<ul>
+<li>Enter</li>
+</ul></li>
+<li>Ctrl + [
+<ul>
+<li>ESC</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="800" data-x="4800">
+<h1>emacsキーバインド cont.</h1>
+
+<ul>
+<li>ESC + f
+<ul>
+<li>右に1単語移動</li>
+</ul></li>
+<li>ESC + b
+<ul>
+<li>左に1単語移動</li>
+</ul></li>
+<li>ESC + d
+<ul>
+<li>右の1単語削除</li>
+</ul></li>
+<li>Ctrl + w
+<ul>
+<li>左の1単語削除</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="1600" data-x="0">
+<h1>emacsキーバインド cont..</h1>
+
+<ul>
+<li>Ctrl + a
+<ul>
+<li>行頭に移動</li>
+<li>一番最初のa</li>
+</ul></li>
+<li>Ctrl + e
+<ul>
+<li>行末に移動</li>
+<li>end</li>
+</ul></li>
+<li>Ctrl + k
+<ul>
+<li>現在位置から行末まで削除</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="1600" data-x="1200">
+<h1>ヒストリー</h1>
+
+<ul>
+<li>Ctrl + p
+<ul>
+<li>コマンド履歴の後方参照</li>
+<li>previous</li>
+</ul></li>
+<li>Ctrl + n
+<ul>
+<li>コマンド履歴の前方参照</li>
+<li>next</li>
+</ul></li>
+<li>Ctrl + r
+<ul>
+<li>コマンド履歴の後方検索</li>
+</ul></li>
+<li>Ctrl + s
+<ul>
+<li>コマンド履歴の前方検索</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="1600" data-x="2400">
+<h1>fc</h1>
+
+<p>コマンドラインをエディタで編集できます。EDITOR変数に指定されているエディタが立ち上がります。</p>
+
+</div>
+<div class="step" data-y="1600" data-x="3600">
+<h1>簡単なコマンド</h1>
+
+<p>TODO</p>
+
+</div>
+
+
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+<script src="js/impress.js"></script>
+
+</body>
+</html>
+
