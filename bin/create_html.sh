@@ -1,6 +1,6 @@
 #! /usr/bin/zsh -eu
 SOURCEDIR=source
-OUTPUTDIR=build
+OUTPUTDIR=build/build
 
 
 mkdir -p ${OUTPUTDIR}
@@ -14,7 +14,7 @@ do
                 rst2s5 --theme=small-black ${SOURCEDIR}/${SOURCE} ${OUTPUTDIR}/${BODY}.html
                 ;;
             *\.md)
-                markdown2impress.pl  --outputdir="$( pwd )/build" ${SOURCEDIR}/${SOURCE}
+                markdown2impress.pl  --outputdir="$( pwd )/${OUTPUTDIR}" ${SOURCEDIR}/${SOURCE}
                 mv ${OUTPUTDIR}/index.html ${OUTPUTDIR}/${BODY}.html
                 ;;
             *)
