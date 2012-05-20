@@ -38,7 +38,20 @@
 
 </div>
 <div class="step" data-y="0" data-x="2400">
-<h1>自己紹介とか</h1>
+<h1>前提条件</h1>
+
+<p>基本的に以下の環境で動かすことを前提にしています。</p>
+
+<ul>
+<li>Debian lenny</li>
+<li>vim</li>
+<li>zsh</li>
+<li>screen</li>
+</ul>
+
+</div>
+<div class="step" data-y="0" data-x="3600">
+<h1>1. 自己紹介とか</h1>
 
 <ul>
 <li>すずきまさし (鈴木 勝史)</li>
@@ -47,7 +60,7 @@
 </ul>
 
 </div>
-<div class="step" data-y="0" data-x="3600">
+<div class="step" data-y="0" data-x="4800">
 <h1>コンテキストとか</h1>
 
 <ul>
@@ -64,7 +77,7 @@
 </ul>
 
 </div>
-<div class="step" data-y="0" data-x="4800">
+<div class="step" data-y="800" data-x="0">
 <h1>普段のお仕事環境</h1>
 
 <p>クライアントマシン
@@ -88,17 +101,20 @@
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="0">
-<h1>なんで黒い画面(ターミナル)</h1>
-
-<p>TODO</p>
-
-</div>
 <div class="step" data-y="800" data-x="1200">
-<h1>コマンドライン操作</h1>
+<h1>2. なんで黒い画面</h1>
+
+<ul>
+<li>回線が細い場所でも操作が可能</li>
+<li>複数のサーバに対して操作がしゃすい</li>
+</ul>
 
 </div>
 <div class="step" data-y="800" data-x="2400">
+<h1>3. コマンドライン操作</h1>
+
+</div>
+<div class="step" data-y="800" data-x="3600">
 <h1>コマンドライン編集</h1>
 
 <p>コマンドラインはデフォルトで、emacsキーバインドになっています。
@@ -111,7 +127,7 @@ set -o emacs
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="3600">
+<div class="step" data-y="800" data-x="4800">
 <h1>emacsキーバインド</h1>
 
 <ul>
@@ -140,7 +156,7 @@ set -o emacs
 </ul>
 
 </div>
-<div class="step" data-y="800" data-x="4800">
+<div class="step" data-y="1600" data-x="0">
 <h1>emacsキーバインド cont.</h1>
 
 <ul>
@@ -163,7 +179,7 @@ set -o emacs
 </ul>
 
 </div>
-<div class="step" data-y="1600" data-x="0">
+<div class="step" data-y="1600" data-x="1200">
 <h1>emacsキーバインド cont..</h1>
 
 <ul>
@@ -184,7 +200,7 @@ set -o emacs
 </ul>
 
 </div>
-<div class="step" data-y="1600" data-x="1200">
+<div class="step" data-y="1600" data-x="2400">
 <h1>ヒストリー</h1>
 
 <ul>
@@ -209,16 +225,110 @@ set -o emacs
 </ul>
 
 </div>
-<div class="step" data-y="1600" data-x="2400">
+<div class="step" data-y="1600" data-x="3600">
 <h1>fc</h1>
 
 <p>コマンドラインをエディタで編集できます。EDITOR変数に指定されているエディタが立ち上がります。</p>
 
 </div>
-<div class="step" data-y="1600" data-x="3600">
-<h1>簡単なコマンド</h1>
+<div class="step" data-y="1600" data-x="4800">
+<h1>4. 簡単なコマンド</h1>
 
-<p>TODO</p>
+<p>Unixコマンドは基本的に以下の形式で、オプションと引数を取ることがあります。</p>
+
+<pre><code>command &lt;option&gt; &lt;argument&gt;
+</code></pre>
+
+</div>
+<div class="step" data-y="2400" data-x="0">
+<h2>man</h2>
+
+<p>コマンドのリファレンスを表示します。ググる前にまず引いてください。</p>
+
+<pre><code>% man &lt;section&gt; &lt;command&gt;
+</code></pre>
+
+<p>セクション番号の意味は以下の通り。コマンドを調べる限りは1もしくは省略しても大丈夫です。</p>
+
+<pre><code>1   Executable programs or shell commands
+2   System calls (functions provided by the kernel)
+3   Library calls (functions within program libraries)
+4   Special files (usually found in /dev)
+5   File formats and conventions eg /etc/passwd
+6   Games
+7   Miscellaneous (including macro packages and  conventions),
+    e.g. man(7), groff(7)
+8   System administration commands (usually only for root)
+9   Kernel routines [Non standard]
+</code></pre>
+
+</div>
+<div class="step" data-y="2400" data-x="1200">
+<h2>pwd</h2>
+
+<p>今いるディレクトリを表示します。</p>
+
+<pre><code>% pwd
+/home/masasuzu
+</code></pre>
+
+</div>
+<div class="step" data-y="2400" data-x="2400">
+<h2>ls</h2>
+
+<p>ディレクトリの中身を表示します。</p>
+
+</div>
+<div class="step" data-y="2400" data-x="3600">
+<h2>cd</h2>
+
+<p>今いるディレクトリを移動します。</p>
+
+</div>
+<div class="step" data-y="2400" data-x="4800">
+<h2>touch</h2>
+
+</div>
+<div class="step" data-y="3200" data-x="0">
+<h2>mkdir</h2>
+
+</div>
+<div class="step" data-y="3200" data-x="1200">
+<h2>rm</h2>
+
+</div>
+<div class="step" data-y="3200" data-x="2400">
+<h2>rmdir</h2>
+
+</div>
+<div class="step" data-y="3200" data-x="3600">
+<h2>cat</h2>
+
+</div>
+<div class="step" data-y="3200" data-x="4800">
+<h2>lv</h2>
+
+</div>
+<div class="step" data-y="4000" data-x="0">
+<h2>df</h2>
+
+</div>
+<div class="step" data-y="4000" data-x="1200">
+<h2>du</h2>
+
+</div>
+<div class="step" data-y="4000" data-x="2400">
+<h2>ps</h2>
+
+</div>
+<div class="step" data-y="4000" data-x="3600">
+<h2>top</h2>
+
+</div>
+<div class="step" data-y="4000" data-x="4800">
+<h2>screen, tscreen, tmux</h2>
+
+<p>複数ウィンドウを管理できるプログラム。</p>
 
 </div>
 
