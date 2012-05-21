@@ -32,7 +32,7 @@
 <ol>
 <li>自己紹介的な何か.</li>
 <li>なぜ黒い画面.</li>
-<li>コマンドライン操作</li>
+<li>コマンドライン操作.</li>
 <li>簡単なコマンド.</li>
 </ol>
 
@@ -102,19 +102,54 @@
 
 </div>
 <div class="step" data-y="800" data-x="1200">
-<h1>2. なんで黒い画面</h1>
+<h1>2. 黒い画面</h1>
+
+</div>
+<div class="step" data-y="800" data-x="2400">
+<h1>黒い画面の理由</h1>
 
 <ul>
 <li>回線が細い場所でも操作が可能</li>
 <li>複数のサーバに対して操作がしゃすい</li>
+<li>定型操作を自動化しやすい</li>
 </ul>
 
 </div>
-<div class="step" data-y="800" data-x="2400">
+<div class="step" data-y="800" data-x="3600">
+<h1>ターミナルエミュレータ</h1>
+
+<p>サーバに接続するには、ターミナルエミュレータを使用する必要があります。このターミナルエミュレータのことを一般的に黒い画面と言います。
+Windows で動作するターミナルエミュレータには以下のものがあります。</p>
+
+<ul>
+<li>mintty</li>
+<li>Tera Term</li>
+<li>コマンドプロンプト</li>
+<li>PuTTY</li>
+</ul>
+
+</div>
+<div class="step" data-y="800" data-x="4800">
+<h1>SSH</h1>
+
+<p>sshとはローカルのターミナルからリモートのサーバへ接続するためのプロトコルです。
+古くはtelnetが使われていましたが、平文で通信するなど、セキュリティ的に問題があるため、現在ではほとんど使われていません。</p>
+
+<p>認証の方式にパスワードと公開鍵方式がありますが、基本的にパスワード認証は推奨されません。</p>
+
+</div>
+<div class="step" data-y="1600" data-x="0">
 <h1>3. コマンドライン操作</h1>
 
 </div>
-<div class="step" data-y="800" data-x="3600">
+<div class="step" data-y="1600" data-x="1200">
+<h1>コマンドライン</h1>
+
+<p>ターミナルでは基本的にCUIと呼ばれる文字ベースのインターフェースが使用されます。
+一般的にコマンドラインと呼ばれ、1行単位で命令(コマンド)を実行します。</p>
+
+</div>
+<div class="step" data-y="1600" data-x="2400">
 <h1>コマンドライン編集</h1>
 
 <p>コマンドラインはデフォルトで、emacsキーバインドになっています。
@@ -127,7 +162,7 @@ set -o emacs
 </code></pre>
 
 </div>
-<div class="step" data-y="800" data-x="4800">
+<div class="step" data-y="1600" data-x="3600">
 <h1>emacsキーバインド</h1>
 
 <ul>
@@ -156,7 +191,7 @@ set -o emacs
 </ul>
 
 </div>
-<div class="step" data-y="1600" data-x="0">
+<div class="step" data-y="1600" data-x="4800">
 <h1>emacsキーバインド cont.</h1>
 
 <ul>
@@ -179,7 +214,7 @@ set -o emacs
 </ul>
 
 </div>
-<div class="step" data-y="1600" data-x="1200">
+<div class="step" data-y="2400" data-x="0">
 <h1>emacsキーバインド cont..</h1>
 
 <ul>
@@ -200,7 +235,7 @@ set -o emacs
 </ul>
 
 </div>
-<div class="step" data-y="1600" data-x="2400">
+<div class="step" data-y="2400" data-x="1200">
 <h1>ヒストリー</h1>
 
 <ul>
@@ -225,13 +260,13 @@ set -o emacs
 </ul>
 
 </div>
-<div class="step" data-y="1600" data-x="3600">
+<div class="step" data-y="2400" data-x="2400">
 <h1>fc</h1>
 
 <p>コマンドラインをエディタで編集できます。EDITOR変数に指定されているエディタが立ち上がります。</p>
 
 </div>
-<div class="step" data-y="1600" data-x="4800">
+<div class="step" data-y="2400" data-x="3600">
 <h1>4. 簡単なコマンド</h1>
 
 <p>Unixコマンドは基本的に以下の形式で、オプションと引数を取ることがあります。</p>
@@ -240,7 +275,24 @@ set -o emacs
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="0">
+<div class="step" data-y="2400" data-x="4800">
+<h2>オプション</h2>
+
+<p>コマンドにはオプションをつけることで挙動を変えることができるものもあります。</p>
+
+<p>オプションにはロングタイプとショートタイプがあります。シェルスクリプトなどあとで見返すことのあるものに関してはロングタイプを使うと良いでしょう。</p>
+
+<pre><code>perl -v
+perl --version
+</code></pre>
+
+<p>ショートオプションに関しては、くっつけて記述することも可能です。</p>
+
+<pre><code>ls -lah
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="0">
 <h2>man</h2>
 
 <p>コマンドのリファレンスを表示します。ググる前にまず引いてください。</p>
@@ -263,7 +315,7 @@ set -o emacs
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="1200">
+<div class="step" data-y="3200" data-x="1200">
 <h2>pwd</h2>
 
 <p>今いるディレクトリを表示します。</p>
@@ -273,62 +325,193 @@ set -o emacs
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="2400">
+<div class="step" data-y="3200" data-x="2400">
 <h2>ls</h2>
 
 <p>ディレクトリの中身を表示します。</p>
 
+<pre><code>ls
+
+# リスト表示
+ls -l
+
+# 隠しファイルも表示
+ls -a
+</code></pre>
+
 </div>
-<div class="step" data-y="2400" data-x="3600">
+<div class="step" data-y="3200" data-x="3600">
 <h2>cd</h2>
 
 <p>今いるディレクトリを移動します。</p>
 
-</div>
-<div class="step" data-y="2400" data-x="4800">
-<h2>touch</h2>
+<pre><code># 今いるディレクトリのある&lt;file&gt;というディレクトリに移動
+cd &lt;file&gt;
 
-</div>
-<div class="step" data-y="3200" data-x="0">
-<h2>mkdir</h2>
+# 一つ前にいたディレクトリに移動
+cd -
 
-</div>
-<div class="step" data-y="3200" data-x="1200">
-<h2>rm</h2>
-
-</div>
-<div class="step" data-y="3200" data-x="2400">
-<h2>rmdir</h2>
-
-</div>
-<div class="step" data-y="3200" data-x="3600">
-<h2>cat</h2>
+# ホームディレクトリに移動
+cd ~
+</code></pre>
 
 </div>
 <div class="step" data-y="3200" data-x="4800">
-<h2>lv</h2>
+<h2>touch</h2>
+
+<p>新しく空のファイルを作ります。すでに存在する場合は更新時間を更新します。</p>
+
+<pre><code>touch &lt;file&gt;
+</code></pre>
 
 </div>
 <div class="step" data-y="4000" data-x="0">
-<h2>df</h2>
+<h2>mkdir</h2>
+
+<p>ディレクトリを作ります。</p>
+
+<pre><code>mkdir &lt;file&gt;
+
+# 親ディレクトリが存在しない場合、まとめて作成する
+mkdir -p       &lt;directory&gt;/&lt;directory&gt;
+mkdir --parent &lt;directory&gt;/&lt;directory&gt;
+</code></pre>
 
 </div>
 <div class="step" data-y="4000" data-x="1200">
-<h2>du</h2>
+<h2>rm</h2>
+
+<p>ファイルを削除します。</p>
+
+<pre><code>rm &lt;file&gt;
+
+# ディレクトリを再帰的に削除します
+rm -r          &lt;directory&gt;
+rm --recursive &lt;directory&gt;
+</code></pre>
 
 </div>
 <div class="step" data-y="4000" data-x="2400">
-<h2>ps</h2>
+<h2>rmdir</h2>
+
+<p>空のディレクトリを削除します。rmコマンドでファイルを削除してから、rmdirコマンドで削除すると安全です。</p>
+
+<pre><code>rmdir &lt;directory&gt;
+</code></pre>
 
 </div>
 <div class="step" data-y="4000" data-x="3600">
-<h2>top</h2>
+<h2>cat</h2>
+
+<p>ファイルの中身を出力します。</p>
+
+<pre><code>cat &lt;file&gt;
+</code></pre>
 
 </div>
 <div class="step" data-y="4000" data-x="4800">
+<h2>head</h2>
+
+<p>ファイルの先頭数行を表示します。</p>
+
+<pre><code>head &lt;file&gt;
+</code></pre>
+
+</div>
+<div class="step" data-y="4800" data-x="0">
+<h2>tail</h2>
+
+<p>ファイルの末尾数行を表示します。</p>
+
+<pre><code>tail &lt;file&gt;
+</code></pre>
+
+</div>
+<div class="step" data-y="4800" data-x="1200">
+<h2>tailf</h2>
+
+<p>tailと同じくファイルの末尾を表示しますが、ファイルに更新があった際に更新分を表示してくれます。
+tail -fでも同様のことができますが、tailfが使用可能な環境であれば、tailfの使用を推奨します。</p>
+
+<pre><code>tailf &lt;file&gt;
+</code></pre>
+
+</div>
+<div class="step" data-y="4800" data-x="2400">
+<h2>lv</h2>
+
+<p>ファイルの中身をページングして表示します。
+j,k,Ctrl + u, Ctrl + dで上下移動できます。
+?,/で検索できます。移動方式はvimとほぼ同じなので覚えておくとよいでしょう。</p>
+
+<pre><code>lv &lt;file&gt;
+</code></pre>
+
+</div>
+<div class="step" data-y="4800" data-x="3600">
+<h2>df</h2>
+
+<p>ディスクの空き状況を表示します。</p>
+
+<pre><code>df
+
+# 読みやすい単位で表示します
+df -h
+</code></pre>
+
+</div>
+<div class="step" data-y="4800" data-x="4800">
+<h2>du</h2>
+
+<p>現在いるディレクトリ以下のディスクの使用状況を表示します。</p>
+
+<pre><code># デフォルトはカレントディレクトリ
+du
+
+# ディレクトリ指定出来る
+du &lt;directory&gt;
+
+# サブディレクトリは探索しない
+du -s
+</code></pre>
+
+</div>
+<div class="step" data-y="5600" data-x="0">
+<h2>ps</h2>
+
+<p>現在実行されているプロセスを表示する</p>
+
+<pre><code>ps
+
+#全てのプロセスを表示する
+ps -ef
+</code></pre>
+
+</div>
+<div class="step" data-y="5600" data-x="1200">
+<h2>top</h2>
+
+<p>実行中のプロセスのリソース使用状況をリアルタイムに表示します。
+&lt;,>でソートする列を変更することができます。</p>
+
+<pre><code>top
+</code></pre>
+
+</div>
+<div class="step" data-y="5600" data-x="2400">
 <h2>screen, tscreen, tmux</h2>
 
-<p>複数ウィンドウを管理できるプログラム。</p>
+<p>複数ウィンドウを管理できるプログラム。別の人が詳しく説明してくれるはずです。</p>
+
+</div>
+<div class="step" data-y="5600" data-x="3600">
+<h2>その他</h2>
+
+<p>ここまで基本的なコマンドを上げました。それ以外のちょっと複雑なコマンドや使い方に関しては次回やります。</p>
+
+</div>
+<div class="step" data-y="5600" data-x="4800">
+<h1>Thank you.</h1>
 
 </div>
 
