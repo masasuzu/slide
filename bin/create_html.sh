@@ -1,4 +1,4 @@
-#! /usr/bin/zsh -eu
+#! /bin/zsh -eu
 SOURCEDIR=source
 OUTPUTDIR=build/build
 
