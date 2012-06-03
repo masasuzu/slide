@@ -17,7 +17,7 @@
 <h1>黒い画面入門 Part.II</h1>
 
 <p>Version
-:1.0 of 2012/05/21</p>
+:1.0 of 2012/06/04</p>
 
 <p>Author
 :SUZUKI Masashi / masasuzu</p>
@@ -30,7 +30,8 @@
 <h1>Agenda</h1>
 
 <ol>
-<li>zsh</li>
+<li>zshことはじめ</li>
+<li>設定ファイル</li>
 <li>パイプとリダイレクト</li>
 <li>aliasとfunction</li>
 <li>開発で使うと便利かも知れないコマンド</li>
@@ -51,30 +52,224 @@
 
 </div>
 <div class="step" data-y="0" data-x="3600">
-<h1>1. zsh</h1>
+<h1>1. zshことはじめ</h1>
 
 </div>
 <div class="step" data-y="0" data-x="4800">
-<h1>2. パイプとリダイレクション</h1>
+<h2>そもそもシェルとは</h2>
+
+<p>ユーザからの指示を解釈し、プログラムの起動や制御を行うプログラムです。
+windowsのGUIならexplorerなどもそうです。CUIであれば、コマンドプロンプトなど。</p>
+
+<p>ターミナルはシェルでは無く、あくまで端末であり、その端末を通して入力されたコマンドラインを解釈し、プログラムを実行するのがシェルです。</p>
 
 </div>
 <div class="step" data-y="800" data-x="0">
-<h1>3. aliasとfunction</h1>
+<h2>Unixのシェル</h2>
+
+<p>Unix系のシェルは以下のものがあります。</p>
+
+<ul>
+<li>Bourne Shell(sh)</li>
+<li>Korn Shell(ksh)</li>
+<li>Bourne Agen Shell(bash)
+<ul>
+<li>Linuxの標準シェル</li>
+</ul></li>
+<li>Z Shell(zsh)</li>
+<li>Almquist Shell(ash)</li>
+<li><p>Debian Almquist Shell(dash)</p>
+
+<ul>
+<li>Debianの/bin/shはコレ</li>
+</ul></li>
+<li><p>C Shell(csh)</p></li>
+<li>TENEX C Shell(tcsh)</li>
+</ul>
 
 </div>
 <div class="step" data-y="800" data-x="1200">
-<h1>4. 開発で使うと便利かも知れないコマンド</h1>
+<h2>zshは何者</h2>
+
+<p>shを基本とした高機能なシェル。bashより便利なシェルと今は覚えておけば問題ないです。
+当社ではユーザのデフォルトのシェルをコレに設定しています。</p>
+
+<pre><code>man -L C zsh
+</code></pre>
 
 </div>
 <div class="step" data-y="800" data-x="2400">
-<h1>コードを書く</h1>
+<h2>ちょっと便利なzsh</h2>
 
 </div>
 <div class="step" data-y="800" data-x="3600">
-<h1>vim</h1>
+<h2>コマンドラインスタック</h2>
+
+<p>コマンドラインを途中まで打った後、Ctrl + qを押すとコマンドラインをスタックすることができる。
+コマンド実行後に自動的にコマンドラインにポップされます。</p>
 
 </div>
 <div class="step" data-y="800" data-x="4800">
+<h2>オートヘルプ</h2>
+
+<p>コマンドを打った後、ESC + hを押すとman pageを表示させることができます。</p>
+
+<p>コマンドを途中まで打った後引数とか調べたい時に便利。</p>
+
+</div>
+<div class="step" data-y="1600" data-x="0">
+<h2>コマンド補完</h2>
+
+<p>コマンドを途中まで打った後、TabまたはCtrl + i でコマンドの補完ができます。
+また、ESC + Ctrl + dで候補一覧を出力することができます。</p>
+
+<p>コマンド補完を有効にするには下記の設定を入れておく必要があります。</p>
+
+<pre><code>autoload -U compinit &amp;&amp; compinit
+</code></pre>
+
+<p>また、新しいコマンドを入れた際にはrehashを実行することで補完の候補を更新することができます。</p>
+
+</div>
+<div class="step" data-y="1600" data-x="1200">
+<h1>2. 設定ファイル</h1>
+
+<p>zshの設定ファイルは各種あり、場合によって読み込まれるもの読み込まれないものがあるので、読み込み順とともに軽く覚えておくと良いでしょう。</p>
+
+<ul>
+<li>SEE ALSO
+<ul>
+<li>http://d.hatena.ne.jp/masasuz/20120506/1336286016</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="1600" data-x="2400">
+<h2>各種ファイル</h2>
+
+<ul>
+<li>~/.zshenv
+<ul>
+<li>常に読み込まれるファイルなのでパス等常用するものを書いておくと良いでしょう</li>
+</ul></li>
+<li>~/.zprofile
+<ul>
+<li>ちょっと使いどころが分かってない。すみません。</li>
+</ul></li>
+<li>~/.zshrc
+<ul>
+<li>インタラクティブシェルとして使うときに読み込まれます。プロンプトなどの設定を書いておくと良いでしょう。</li>
+</ul></li>
+<li>~/.zlogin
+<ul>
+<li>ログイン時に読み込まれます</li>
+</ul></li>
+<li>~/.zlogout
+<ul>
+<li>ログアウト時に読み込まれます</li>
+</ul></li>
+</ul>
+
+</div>
+<div class="step" data-y="1600" data-x="3600">
+<h2>ログインシェルでzshを起動した時</h2>
+
+<ol>
+<li>~/.zshenv</li>
+<li>~/.zprofile</li>
+<li>~/.zshrc</li>
+<li>~/.zlogin</li>
+</ol>
+
+</div>
+<div class="step" data-y="1600" data-x="4800">
+<h2>インタラクティブシェルでzshを起動した時</h2>
+
+<ol>
+<li>~/.zshenv</li>
+<li>~/.zshrc</li>
+</ol>
+
+</div>
+<div class="step" data-y="2400" data-x="0">
+<h2>シェルスクリプトとしてzshを起動した時</h2>
+
+<ol>
+<li>~/.zshenv</li>
+</ol>
+
+</div>
+<div class="step" data-y="2400" data-x="1200">
+<h2>ログアウトする時</h2>
+
+<ol>
+<li>~/.zlogout</li>
+</ol>
+
+</div>
+<div class="step" data-y="2400" data-x="2400">
+<h1>3. パイプラインとリダイレクション</h1>
+
+<p>あるコマンドの標準出力をあるコマンドの標準入力に渡すのをパイプライン。</p>
+
+<p>ファイルの中身を標準入力としてコマンドを実行、またはコマンドの標準出力をファイルに向けて書き出すのをリダイレクションと言います。</p>
+
+</div>
+<div class="step" data-y="2400" data-x="3600">
+<h2>その前に標準入出力のはなし</h2>
+
+<p>Unixにおいて標準入力はキーボードの入力。標準出力はディスプレイへの出力です。出力にはもう一つ標準エラー出力があります。</p>
+
+<p>標準出力がバッファリングされるのに対し、標準エラー出力はバッファリングされずに即座に出力されます。</p>
+
+<p>デフォルトの入出力先を変える仕組みがパイプラインやリダイレクションと言うことです。</p>
+
+</div>
+<div class="step" data-y="2400" data-x="4800">
+<h2>パイプライン</h2>
+
+<pre><code>ls | sort
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="0">
+<h2>リダイレクション</h2>
+
+<pre><code>ls &gt; ls.txt
+sort &lt; ls.txt
+</code></pre>
+
+<p>teeコマンドを使うとファイルに標準出力を保存しつつ、ディスプレイでも出力が確認できます。</p>
+
+<pre><code>cmd | tee cmd.log
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="1200">
+<h1>4. aliasとfunction</h1>
+
+<p>よく使うオプションなどはaliasやfunctionとして設定ファイルに定義しておくと楽です。</p>
+
+<pre><code>alias emacs='vim'
+function hoge() {
+    #some parocess...
+}
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="2400">
+<h1>5. 開発で使うと便利かも知れないコマンド</h1>
+
+</div>
+<div class="step" data-y="3200" data-x="3600">
+<h1>コードを書く</h1>
+
+</div>
+<div class="step" data-y="3200" data-x="4800">
+<h1>vim</h1>
+
+</div>
+<div class="step" data-y="4000" data-x="0">
 <h1>vim -c</h1>
 
 <p>普段エディタはvimを使っています。-cオプションを付けると起動時にコマンドを実行してくれます。</p>
@@ -83,7 +278,7 @@
 </code></pre>
 
 </div>
-<div class="step" data-y="1600" data-x="0">
+<div class="step" data-y="4000" data-x="1200">
 <h1>vim -d</h1>
 
 <p>diffを使っても良いんですが、vimでシンタックスハイライトをしてくれるので、ハイライト大好きな人なら使っておいて損は無いかと。</p>
@@ -95,7 +290,7 @@ vimdiff ${FILE1} ${FILE2}
 </code></pre>
 
 </div>
-<div class="step" data-y="1600" data-x="1200">
+<div class="step" data-y="4000" data-x="2400">
 <h1>vim -b -c ':%!xxd'</h1>
 
 <p>バイナリも開けるよ。
@@ -105,7 +300,7 @@ vimdiff ${FILE1} ${FILE2}
 </code></pre>
 
 </div>
-<div class="step" data-y="1600" data-x="2400">
+<div class="step" data-y="4000" data-x="3600">
 <h1>vim -R</h1>
 
 <p>読み込み専用モードで開く。シンタックスハイライトが(ry</p>
@@ -117,15 +312,15 @@ view   ${FILE}
 </code></pre>
 
 </div>
-<div class="step" data-y="1600" data-x="3600">
+<div class="step" data-y="4000" data-x="4800">
 <h1>コードを探す</h1>
 
 </div>
-<div class="step" data-y="1600" data-x="4800">
+<div class="step" data-y="4800" data-x="0">
 <h1>grep</h1>
 
 </div>
-<div class="step" data-y="2400" data-x="0">
+<div class="step" data-y="4800" data-x="1200">
 <h1>grep -r</h1>
 
 <p>再帰的に検索してくれます。</p>
@@ -137,7 +332,7 @@ grep --directories=recurse ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="1200">
+<div class="step" data-y="4800" data-x="2400">
 <h1>grep -n</h1>
 
 <p>行数を表示します。</p>
@@ -146,7 +341,7 @@ grep --directories=recurse ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="2400">
+<div class="step" data-y="4800" data-x="3600">
 <h1>grep -A -B -C</h1>
 
 <p>"-A n"でマッチした行の後ろの行n行、"-B n"でマッチした行の前n行も表示してくれます。
@@ -159,7 +354,7 @@ grep -r -C3     ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="3600">
+<div class="step" data-y="4800" data-x="4800">
 <h1>grep --exclude-dir</h1>
 
 <p>除外ディレクトリを指定できます。.gitとか.svmとかを除外しておくと良いです。</p>
@@ -168,7 +363,7 @@ grep -r -C3     ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="2400" data-x="4800">
+<div class="step" data-y="5600" data-x="0">
 <h1>grep --color</h1>
 
 <p>検索結果を色づけしてくれます。</p>
@@ -177,7 +372,7 @@ grep -r -C3     ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="3200" data-x="0">
+<div class="step" data-y="5600" data-x="1200">
 <h1>grep -v</h1>
 
 <p>マッチしない行を返してくれます。
@@ -187,7 +382,7 @@ grep -r -C3     ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="3200" data-x="1200">
+<div class="step" data-y="5600" data-x="2400">
 <h1>grep -w -x</h1>
 
 <p>"-w"オプションは単語としてマッチした行、"-x"オプションは行としてマッチした行を返してくれます。</p>
@@ -202,13 +397,13 @@ grep -r  --line-regexp ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="3200" data-x="2400">
+<div class="step" data-y="5600" data-x="3600">
 <h1>grep -h</h1>
 
 <p>ファイル名を表示させません。パイプラインに喰わせる時に使います。</p>
 
 </div>
-<div class="step" data-y="3200" data-x="3600">
+<div class="step" data-y="5600" data-x="4800">
 <h1>grep -c</h1>
 
 <p>ファイル毎でマッチした回数をカウントします。</p>
@@ -223,7 +418,7 @@ grep -rwhc ${PATTERN} ./ | perl -E 'my $c; while (&lt;STDIN&gt;) { chomp; $c += 
 </code></pre>
 
 </div>
-<div class="step" data-y="3200" data-x="4800">
+<div class="step" data-y="6400" data-x="0">
 <h1>grep -c cont.</h1>
 
 <p>そんな面倒なことしなくても、wc -lに喰わせれば良いのでした。</p>
@@ -232,7 +427,7 @@ grep -rwhc ${PATTERN} ./ | perl -E 'my $c; while (&lt;STDIN&gt;) { chomp; $c += 
 </code></pre>
 
 </div>
-<div class="step" data-y="4000" data-x="0">
+<div class="step" data-y="6400" data-x="1200">
 <h1>grep -l -L</h1>
 
 <p>"-l"オプションでマッチしたファイル名を表示、"-L"オプションでマッチしなかったファイル名を表示します。</p>
@@ -247,7 +442,7 @@ grep -rwl ${PATTERN} ./ | wc -l
 </code></pre>
 
 </div>
-<div class="step" data-y="4000" data-x="1200">
+<div class="step" data-y="6400" data-x="2400">
 <h1>grepその他</h1>
 
 <ul>
@@ -270,7 +465,7 @@ grep -rwl ${PATTERN} ./ | wc -l
 </ul>
 
 </div>
-<div class="step" data-y="4000" data-x="2400">
+<div class="step" data-y="6400" data-x="3600">
 <h1>GREP_OPTIONS変数</h1>
 
 <p>GREP_OPTIONS変数を定義しておくと、grep使用時に指定されたオプションを付けてくれます。</p>
@@ -281,7 +476,7 @@ grep -rwl ${PATTERN} ./ | wc -l
 </code></pre>
 
 </div>
-<div class="step" data-y="4000" data-x="3600">
+<div class="step" data-y="6400" data-x="4800">
 <h1>ack</h1>
 
 <p>Perlで実装されたgrep互換のコマンド。
@@ -290,18 +485,18 @@ cpanだとApp::Ack、debianだとack-grepってパッケージ名になってい
 <p>デフォルトで、色づけされていたり、再帰的に検索してくれるので、カジュアルに使うにはgrepよりは便利。</p>
 
 </div>
-<div class="step" data-y="4000" data-x="4800">
+<div class="step" data-y="7200" data-x="0">
 <h1>git grep</h1>
 
 <p>gitを使っているなら素直にgit grep使った方が良いシーンが多いと思います。
 grep本体より低機能。</p>
 
 </div>
-<div class="step" data-y="4800" data-x="0">
+<div class="step" data-y="7200" data-x="1200">
 <h1>ログを見る</h1>
 
 </div>
-<div class="step" data-y="4800" data-x="1200">
+<div class="step" data-y="7200" data-x="2400">
 <h1>date</h1>
 
 <p>現在時刻を表示するコマンド。フォーマットを指定することもできるので、日にちでローテションしているログファイルにアクセスするのに使えます。</p>
@@ -316,7 +511,7 @@ grep本体より低機能。</p>
 </code></pre>
 
 </div>
-<div class="step" data-y="4800" data-x="2400">
+<div class="step" data-y="7200" data-x="3600">
 <h1>tail</h1>
 
 <p>tailfをgrepに喰わせることで、フィルタリングすることもできます。</p>
@@ -330,7 +525,7 @@ grep本体より低機能。</p>
 </code></pre>
 
 </div>
-<div class="step" data-y="4800" data-x="3600">
+<div class="step" data-y="7200" data-x="4800">
 <h1>ssh</h1>
 
 <p>ssh接続先に一番最後の引数にコマンドを指定すると接続先にコマンドを実行することがでいます。</p>
@@ -341,7 +536,7 @@ grep本体より低機能。</p>
 </code></pre>
 
 </div>
-<div class="step" data-y="4800" data-x="4800">
+<div class="step" data-y="8000" data-x="0">
 <h1>Thank you.</h1>
 
 </div>
