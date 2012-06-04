@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>黒い画面入門 Part.II</title>
+    <title>黒い画面入門 Part II</title>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
     <link href="css/impress.css" rel="stylesheet" />
 </head>
@@ -226,18 +226,96 @@ windowsのGUIならexplorerなどもそうです。CUIであれば、コマン�
 
 </div>
 <div class="step" data-y="2400" data-x="4800">
-<h2>パイプライン</h2>
-
-<pre><code>ls | sort
-</code></pre>
+<h2>パイプラインに使うコマンド</h2>
 
 </div>
 <div class="step" data-y="3200" data-x="0">
+<h2>sort</h2>
+
+<p>ファイルをソートするコマンド。</p>
+
+<pre><code>sort &lt;filename&gt;
+
+du -h ./* | sort -n
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="1200">
+<h2>grep, egrep, fgrep</h2>
+
+<p>パターンにマッチする行を表示する。</p>
+
+<pre><code>grep 'pattern' &lt;filename&gt;
+
+ps -ef | egrep '[m]ysql'
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="2400">
+<h2>lv</h2>
+
+<p>ファイルをページングして表示するコマンド。</p>
+
+<pre><code>lv &lt;filename&gt;
+
+ps -ef | egrep '[m]ysql' | lv
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="3600">
+<h2>wc</h2>
+
+<p>ファイル内のバイト数、行数、単語数を数える</p>
+
+<pre><code>wc &lt;filename&gt;
+
+ps -ef | egrep '[m]ysql' | wc -l  #行数のみ出力
+</code></pre>
+
+</div>
+<div class="step" data-y="3200" data-x="4800">
 <h2>リダイレクション</h2>
+
+<p>標準入力からのリダイレクトは "&lt;"</p>
+
+<p>標準出力への上書きリダイレクトは ">"</p>
+
+<p>標準出力への追記リダイレクトは ">>"</p>
 
 <pre><code>ls &gt; ls.txt
 sort &lt; ls.txt
 </code></pre>
+
+</div>
+<div class="step" data-y="4000" data-x="0">
+<h2>/dev/null</h2>
+
+<p>リダイレクト先を/dev/nullに指定することで出力を捨てることが出来ます。</p>
+
+<pre><code>ls &gt; /dev/null
+</code></pre>
+
+</div>
+<div class="step" data-y="4000" data-x="1200">
+<h2>標準エラー出力のリダイレクト</h2>
+
+<p>標準出力のディスクリプタは1、標準エラー出力のディスクリプタは2になってます。</p>
+
+<pre><code>cmd 1&gt; file1
+cmd &gt; file1
+
+cmd 2&gt; file2
+cmd 1&gt; /dev/null 2&gt; file2
+</code></pre>
+
+<p>標準エラー出力と標準出力を同じファイルにリダイレクトする場合。</p>
+
+<pre><code>cmd &gt; file 2&gt;&amp;1
+</code></pre>
+
+</div>
+<div class="step" data-y="4000" data-x="2400">
+<h2>tee</h2>
 
 <p>teeコマンドを使うとファイルに標準出力を保存しつつ、ディスプレイでも出力が確認できます。</p>
 
@@ -245,31 +323,38 @@ sort &lt; ls.txt
 </code></pre>
 
 </div>
-<div class="step" data-y="3200" data-x="1200">
+<div class="step" data-y="4000" data-x="3600">
 <h1>4. aliasとfunction</h1>
 
 <p>よく使うオプションなどはaliasやfunctionとして設定ファイルに定義しておくと楽です。</p>
 
 <pre><code>alias emacs='vim'
-function hoge() {
-    #some parocess...
+alias ls='ls --color=auto'
+
+function errorlog() {
+    if [ -d ${HOME}/var/log/apache ]
+    then
+        tail -f ${HOME}/var/log/apache/`date +%Y`/`date +%m`/error.`date +%Y_%m%d`.log
+    else
+        sudo tail -f /var/log/apache2/error.log
+    fi
 }
 </code></pre>
 
 </div>
-<div class="step" data-y="3200" data-x="2400">
+<div class="step" data-y="4000" data-x="4800">
 <h1>5. 開発で使うと便利かも知れないコマンド</h1>
 
 </div>
-<div class="step" data-y="3200" data-x="3600">
+<div class="step" data-y="4800" data-x="0">
 <h1>コードを書く</h1>
 
 </div>
-<div class="step" data-y="3200" data-x="4800">
+<div class="step" data-y="4800" data-x="1200">
 <h1>vim</h1>
 
 </div>
-<div class="step" data-y="4000" data-x="0">
+<div class="step" data-y="4800" data-x="2400">
 <h1>vim -c</h1>
 
 <p>普段エディタはvimを使っています。-cオプションを付けると起動時にコマンドを実行してくれます。</p>
@@ -278,7 +363,7 @@ function hoge() {
 </code></pre>
 
 </div>
-<div class="step" data-y="4000" data-x="1200">
+<div class="step" data-y="4800" data-x="3600">
 <h1>vim -d</h1>
 
 <p>diffを使っても良いんですが、vimでシンタックスハイライトをしてくれるので、ハイライト大好きな人なら使っておいて損は無いかと。</p>
@@ -290,7 +375,7 @@ vimdiff ${FILE1} ${FILE2}
 </code></pre>
 
 </div>
-<div class="step" data-y="4000" data-x="2400">
+<div class="step" data-y="4800" data-x="4800">
 <h1>vim -b -c ':%!xxd'</h1>
 
 <p>バイナリも開けるよ。
@@ -300,7 +385,7 @@ vimdiff ${FILE1} ${FILE2}
 </code></pre>
 
 </div>
-<div class="step" data-y="4000" data-x="3600">
+<div class="step" data-y="5600" data-x="0">
 <h1>vim -R</h1>
 
 <p>読み込み専用モードで開く。シンタックスハイライトが(ry</p>
@@ -312,15 +397,15 @@ view   ${FILE}
 </code></pre>
 
 </div>
-<div class="step" data-y="4000" data-x="4800">
+<div class="step" data-y="5600" data-x="1200">
 <h1>コードを探す</h1>
 
 </div>
-<div class="step" data-y="4800" data-x="0">
+<div class="step" data-y="5600" data-x="2400">
 <h1>grep</h1>
 
 </div>
-<div class="step" data-y="4800" data-x="1200">
+<div class="step" data-y="5600" data-x="3600">
 <h1>grep -r</h1>
 
 <p>再帰的に検索してくれます。</p>
@@ -332,7 +417,7 @@ grep --directories=recurse ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="4800" data-x="2400">
+<div class="step" data-y="5600" data-x="4800">
 <h1>grep -n</h1>
 
 <p>行数を表示します。</p>
@@ -341,7 +426,7 @@ grep --directories=recurse ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="4800" data-x="3600">
+<div class="step" data-y="6400" data-x="0">
 <h1>grep -A -B -C</h1>
 
 <p>"-A n"でマッチした行の後ろの行n行、"-B n"でマッチした行の前n行も表示してくれます。
@@ -354,7 +439,7 @@ grep -r -C3     ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="4800" data-x="4800">
+<div class="step" data-y="6400" data-x="1200">
 <h1>grep --exclude-dir</h1>
 
 <p>除外ディレクトリを指定できます。.gitとか.svmとかを除外しておくと良いです。</p>
@@ -363,7 +448,7 @@ grep -r -C3     ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="5600" data-x="0">
+<div class="step" data-y="6400" data-x="2400">
 <h1>grep --color</h1>
 
 <p>検索結果を色づけしてくれます。</p>
@@ -372,7 +457,7 @@ grep -r -C3     ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="5600" data-x="1200">
+<div class="step" data-y="6400" data-x="3600">
 <h1>grep -v</h1>
 
 <p>マッチしない行を返してくれます。
@@ -382,7 +467,7 @@ grep -r -C3     ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="5600" data-x="2400">
+<div class="step" data-y="6400" data-x="4800">
 <h1>grep -w -x</h1>
 
 <p>"-w"オプションは単語としてマッチした行、"-x"オプションは行としてマッチした行を返してくれます。</p>
@@ -397,13 +482,13 @@ grep -r  --line-regexp ${PATTERN} ./
 </code></pre>
 
 </div>
-<div class="step" data-y="5600" data-x="3600">
+<div class="step" data-y="7200" data-x="0">
 <h1>grep -h</h1>
 
 <p>ファイル名を表示させません。パイプラインに喰わせる時に使います。</p>
 
 </div>
-<div class="step" data-y="5600" data-x="4800">
+<div class="step" data-y="7200" data-x="1200">
 <h1>grep -c</h1>
 
 <p>ファイル毎でマッチした回数をカウントします。</p>
@@ -418,7 +503,7 @@ grep -rwhc ${PATTERN} ./ | perl -E 'my $c; while (&lt;STDIN&gt;) { chomp; $c += 
 </code></pre>
 
 </div>
-<div class="step" data-y="6400" data-x="0">
+<div class="step" data-y="7200" data-x="2400">
 <h1>grep -c cont.</h1>
 
 <p>そんな面倒なことしなくても、wc -lに喰わせれば良いのでした。</p>
@@ -427,7 +512,7 @@ grep -rwhc ${PATTERN} ./ | perl -E 'my $c; while (&lt;STDIN&gt;) { chomp; $c += 
 </code></pre>
 
 </div>
-<div class="step" data-y="6400" data-x="1200">
+<div class="step" data-y="7200" data-x="3600">
 <h1>grep -l -L</h1>
 
 <p>"-l"オプションでマッチしたファイル名を表示、"-L"オプションでマッチしなかったファイル名を表示します。</p>
@@ -442,7 +527,7 @@ grep -rwl ${PATTERN} ./ | wc -l
 </code></pre>
 
 </div>
-<div class="step" data-y="6400" data-x="2400">
+<div class="step" data-y="7200" data-x="4800">
 <h1>grepその他</h1>
 
 <ul>
@@ -465,7 +550,7 @@ grep -rwl ${PATTERN} ./ | wc -l
 </ul>
 
 </div>
-<div class="step" data-y="6400" data-x="3600">
+<div class="step" data-y="8000" data-x="0">
 <h1>GREP_OPTIONS変数</h1>
 
 <p>GREP_OPTIONS変数を定義しておくと、grep使用時に指定されたオプションを付けてくれます。</p>
@@ -476,7 +561,7 @@ grep -rwl ${PATTERN} ./ | wc -l
 </code></pre>
 
 </div>
-<div class="step" data-y="6400" data-x="4800">
+<div class="step" data-y="8000" data-x="1200">
 <h1>ack</h1>
 
 <p>Perlで実装されたgrep互換のコマンド。
@@ -485,18 +570,18 @@ cpanだとApp::Ack、debianだとack-grepってパッケージ名になってい
 <p>デフォルトで、色づけされていたり、再帰的に検索してくれるので、カジュアルに使うにはgrepよりは便利。</p>
 
 </div>
-<div class="step" data-y="7200" data-x="0">
+<div class="step" data-y="8000" data-x="2400">
 <h1>git grep</h1>
 
 <p>gitを使っているなら素直にgit grep使った方が良いシーンが多いと思います。
 grep本体より低機能。</p>
 
 </div>
-<div class="step" data-y="7200" data-x="1200">
+<div class="step" data-y="8000" data-x="3600">
 <h1>ログを見る</h1>
 
 </div>
-<div class="step" data-y="7200" data-x="2400">
+<div class="step" data-y="8000" data-x="4800">
 <h1>date</h1>
 
 <p>現在時刻を表示するコマンド。フォーマットを指定することもできるので、日にちでローテションしているログファイルにアクセスするのに使えます。</p>
@@ -511,7 +596,7 @@ grep本体より低機能。</p>
 </code></pre>
 
 </div>
-<div class="step" data-y="7200" data-x="3600">
+<div class="step" data-y="8800" data-x="0">
 <h1>tail</h1>
 
 <p>tailfをgrepに喰わせることで、フィルタリングすることもできます。</p>
@@ -525,7 +610,7 @@ grep本体より低機能。</p>
 </code></pre>
 
 </div>
-<div class="step" data-y="7200" data-x="4800">
+<div class="step" data-y="8800" data-x="1200">
 <h1>ssh</h1>
 
 <p>ssh接続先に一番最後の引数にコマンドを指定すると接続先にコマンドを実行することがでいます。</p>
@@ -536,7 +621,7 @@ grep本体より低機能。</p>
 </code></pre>
 
 </div>
-<div class="step" data-y="8000" data-x="0">
+<div class="step" data-y="8800" data-x="2400">
 <h1>Thank you.</h1>
 
 </div>
